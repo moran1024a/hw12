@@ -46,3 +46,8 @@
 2026-03-06 16:44:37 | INFO | Action list saved to: ./logs/action_list.txt
 2026-03-06 16:44:37 | INFO | [Train] episode=0 | loss=0.123000 | avg_reward=-286.844
 2026-03-06 16:44:37 | INFO | Environment closed.
+2026-03-06 22:06:12 | INFO | LunarLanderGame initialized.
+2026-03-06 22:06:12 | INFO | env_name=LunarLander-v3
+2026-03-06 22:06:12 | INFO | state_dim=8, action_dim=4
+2026-03-06 22:06:12 | INFO | seed=42, render_mode=human
+2026-03-06 22:06:13 | INFO | [Episode 0] reset | seed=42
