@@ -198,3 +198,183 @@
 2026-03-07 12:57:24 | INFO | [Episode 18] finished | reward=275.212 | steps=180 | success=1 | crash=0 | timeout=0 | time=3.70s
 2026-03-07 12:57:24 | INFO | [Episode 19] reset | seed=6156
 2026-03-07 12:57:28 | INFO | [Episode 19] finished | reward=275.212 | steps=180 | success=1 | crash=0 | timeout=0 | time=3.70s
+2026-03-07 13:00:30 | INFO | LunarLanderGame initialized.
+2026-03-07 13:00:30 | INFO | env_name=LunarLander-v3
+2026-03-07 13:00:30 | INFO | state_dim=8, action_dim=4
+2026-03-07 13:00:30 | INFO | seed=845, render_mode=None
+2026-03-07 13:00:30 | INFO | [Episode 0] reset | seed=845
+2026-03-07 13:00:30 | INFO | [Episode 0] New best reward: 257.997
+2026-03-07 13:00:30 | INFO | [Episode 0] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:30 | INFO | [Episode 1] reset | seed=845
+2026-03-07 13:00:30 | INFO | [Episode 1] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:30 | INFO | [Episode 2] reset | seed=845
+2026-03-07 13:00:30 | INFO | [Episode 2] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:30 | INFO | [Episode 3] reset | seed=845
+2026-03-07 13:00:30 | INFO | [Episode 3] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:30 | INFO | [Episode 4] reset | seed=845
+2026-03-07 13:00:30 | INFO | [Episode 4] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:30 | INFO | [Episode 5] reset | seed=845
+2026-03-07 13:00:30 | INFO | [Episode 5] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:30 | INFO | [Episode 6] reset | seed=845
+2026-03-07 13:00:30 | INFO | [Episode 6] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:30 | INFO | [Episode 7] reset | seed=845
+2026-03-07 13:00:30 | INFO | [Episode 7] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:30 | INFO | [Episode 8] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 8] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 9] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 9] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 10] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 10] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 11] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 11] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 12] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 12] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 13] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 13] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 14] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 14] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 15] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 15] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 16] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 16] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 17] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 17] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 18] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 18] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:31 | INFO | [Episode 19] reset | seed=845
+2026-03-07 13:00:31 | INFO | [Episode 19] finished | reward=257.997 | steps=248 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 13:00:35 | INFO | LunarLanderGame initialized.
+2026-03-07 13:00:35 | INFO | env_name=LunarLander-v3
+2026-03-07 13:00:35 | INFO | state_dim=8, action_dim=4
+2026-03-07 13:00:35 | INFO | seed=5290, render_mode=None
+2026-03-07 13:00:35 | INFO | [Episode 0] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 0] New best reward: 247.212
+2026-03-07 13:00:35 | INFO | [Episode 0] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 1] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 1] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 2] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 2] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 3] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 3] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 4] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 4] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 5] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 5] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 6] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 6] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 7] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 7] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 8] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 8] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 9] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 9] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 10] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 10] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 11] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 11] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 12] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 12] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 13] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 13] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 14] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 14] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 15] reset | seed=5290
+2026-03-07 13:00:35 | INFO | [Episode 15] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:35 | INFO | [Episode 16] reset | seed=5290
+2026-03-07 13:00:36 | INFO | [Episode 16] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:36 | INFO | [Episode 17] reset | seed=5290
+2026-03-07 13:00:36 | INFO | [Episode 17] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:36 | INFO | [Episode 18] reset | seed=5290
+2026-03-07 13:00:36 | INFO | [Episode 18] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:36 | INFO | [Episode 19] reset | seed=5290
+2026-03-07 13:00:36 | INFO | [Episode 19] finished | reward=247.212 | steps=157 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | LunarLanderGame initialized.
+2026-03-07 13:00:40 | INFO | env_name=LunarLander-v3
+2026-03-07 13:00:40 | INFO | state_dim=8, action_dim=4
+2026-03-07 13:00:40 | INFO | seed=1095, render_mode=None
+2026-03-07 13:00:40 | INFO | [Episode 0] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 0] New best reward: 271.453
+2026-03-07 13:00:40 | INFO | [Episode 0] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 1] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 1] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 2] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 2] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 3] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 3] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 4] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 4] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 5] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 5] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 6] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 6] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 7] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 7] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 8] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 8] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 9] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 9] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 10] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 10] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 11] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 11] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 12] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 12] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 13] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 13] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 14] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 14] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 15] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 15] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 16] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 16] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 17] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 17] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 18] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 18] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:40 | INFO | [Episode 19] reset | seed=1095
+2026-03-07 13:00:40 | INFO | [Episode 19] finished | reward=271.453 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | LunarLanderGame initialized.
+2026-03-07 13:00:43 | INFO | env_name=LunarLander-v3
+2026-03-07 13:00:43 | INFO | state_dim=8, action_dim=4
+2026-03-07 13:00:43 | INFO | seed=8337, render_mode=None
+2026-03-07 13:00:43 | INFO | [Episode 0] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 0] New best reward: 259.620
+2026-03-07 13:00:43 | INFO | [Episode 0] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 1] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 1] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 2] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 2] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 3] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 3] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 4] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 4] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 5] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 5] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 6] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 6] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 7] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 7] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 8] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 8] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 9] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 9] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 10] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 10] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 11] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 11] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 12] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 12] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 13] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 13] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 14] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 14] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 15] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 15] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 16] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 16] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 17] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 17] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 18] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 18] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 13:00:43 | INFO | [Episode 19] reset | seed=8337
+2026-03-07 13:00:43 | INFO | [Episode 19] finished | reward=259.620 | steps=179 | success=1 | crash=0 | timeout=0 | time=0.01s

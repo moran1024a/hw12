@@ -56,7 +56,7 @@ def main():
     # =========================
     model_path = "./ppo_outputs/best_model.pt"
     test_episodes = 20
-    render = True
+    render = False
     env_seed = random.randint(0, 10000)  # 每次测试使用不同的随机种子
     # =========================
 
