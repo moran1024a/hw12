@@ -91,7 +91,7 @@ class buffer:
 game = LunarLanderGame(
     env_name="LunarLander-v3",
     seed=42,
-    render_mode="human",
+    #render_mode="human",
     log_dir="./logs",
     save_step_trace=False
 )
@@ -116,7 +116,10 @@ for epoch in range(episodes):
         # 采样动作
         action, log_prob, state_value = model.act(torch.FloatTensor(state))
         # 环境执行
-        next_state, reward, done, _ = game.step(action)
+        result = game.step(action)
+        next_state = result.state
+        reward = result.reward
+        done = result.done
         # 存储经验
         buffer.store(state, action, reward, log_prob, state_value, done)
         # 更新状态
@@ -148,7 +151,8 @@ for epoch in range(episodes):
     # 优势函数
     advantages = returns - old_state_values
     # 标准化
-    advantages = (advantages-advantages.mean())/(advantages.std()+1e-8)
+    advantages = (advantages-advantages.mean()) / \
+        (advantages.std(unbiased=False)+1e-8)
 
     # 评估当前策略
     new_log_probs, new_state_values, entropy = model.evaluate(states, actions)
@@ -169,7 +173,7 @@ for epoch in range(episodes):
 
     # 总损失
     loss = actor_loss + value_coef * critic_loss - entropy_coef * entropy_loss
-    
+
     # ============================================================
 
     # 反向传播和参数更新
