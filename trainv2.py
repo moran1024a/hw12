@@ -24,10 +24,18 @@ class model_v1(nn.Module):
         )
 
         # 动作决策层
-        self.actor = nn.Linear(128, action_dim)
+        self.actor = nn.Sequential(
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, action_dim)
+        )
 
         # 状态价值评估层
-        self.critic = nn.Linear(128, 1)
+        self.critic = nn.Sequential(
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, 1)
+        )
 
     def forward(self, state):
         # 共享层提取特征
@@ -101,14 +109,12 @@ class buffer:
         self.next_state_values = []
 
 
-# >>>>>>> [ADD] 新增：滑动平均函数
 def moving_average(data, window=50):
     result = []
     for i in range(len(data)):
         left = max(0, i - window + 1)
         result.append(sum(data[left:i + 1]) / (i - left + 1))
     return result
-# <<<<<<< [ADD]
 
 
 def compute_gae(rewards, values, next_values, dones, gamma=0.99, gae_lambda=0.95):
@@ -124,7 +130,6 @@ def compute_gae(rewards, values, next_values, dones, gamma=0.99, gae_lambda=0.95
 
     returns = [adv + v for adv, v in zip(advantages, values)]
     return advantages, returns
-# <<<<<<< [ADD]
 
 # ==============================
 
@@ -139,23 +144,29 @@ game = LunarLanderGame(
 )
 
 # 超参数
-LR = 3e-4            # 学习率
-gamma = 0.99         # 折扣因子
-eps_clip = 0.2       # PPO裁剪系数
-value_coef = 0.5     # critic损失权重
-entropy_coef = 0.01  # 熵奖励权重(鼓励探索)
-updates = 1000       # PPO 更新次数
+actor_lr = 3e-4             # actor学习率
+critic_lr = 2e-4            # critic学习率
+gamma = 0.99                # 折扣因子
+eps_clip = 0.2              # PPO裁剪系数
+value_coef = 0.5            # critic损失权重
+entropy_coef_start = 0.01   # 初始熵奖励权重
+entropy_coef_end = 0.001    # 最终熵奖励权重（训练后期减少探索鼓励）
+updates = 1000              # PPO 更新次数
 # PPO稳定参数
-gae_lambda = 0.95            # GAE lambda 参数（取值范围 [0, 1]，控制 bias-variance 权衡）
-rollout_steps = 2048         # 每次更新前收集的步数
-ppo_update_epochs = 10       # 同一批数据重复训练次数
-mini_batch_size = 256        # mini-batch 大小
-max_grad_norm = 0.5          # 梯度裁剪
+gae_lambda = 0.95           # GAE lambda 参数（取值范围 [0, 1]，控制 bias-variance 权衡）
+rollout_steps = 2048        # 每次更新前收集的步数
+ppo_update_epochs = 8       # 同一批数据重复训练次数
+mini_batch_size = 256       # mini-batch 大小
+max_grad_norm = 0.5         # 梯度裁剪
 
 # 模型和缓冲区初始化
 model = model_v1(game.get_state_dim(), game.get_action_dim())
 buffer = buffer()
-optimizer = torch.optim.Adam(model.parameters(), lr=LR)
+optimizer = torch.optim.Adam([
+    {"params": model.shared.parameters(), "lr": actor_lr},
+    {"params": model.actor.parameters(), "lr": actor_lr},
+    {"params": model.critic.parameters(), "lr": critic_lr},
+])
 
 # cuda
 # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -282,11 +293,16 @@ for update_idx in range(updates):
                                 eps_clip) * batch_advantages
             actor_loss = -torch.min(surr1, surr2).mean()
 
-            critic_loss = nn.MSELoss()(new_state_values, batch_returns)
+            critic_loss_fn = nn.SmoothL1Loss()
+            critic_loss = critic_loss_fn(new_state_values, batch_returns)
 
             entropy_loss = entropy.mean()
+            progress = update_idx / updates
+            current_entropy_coef = entropy_coef_start * \
+                (1 - progress) + entropy_coef_end * progress
 
-            loss = actor_loss + value_coef * critic_loss - entropy_coef * entropy_loss
+            loss = actor_loss + value_coef * critic_loss - \
+                current_entropy_coef * entropy_loss
 
             optimizer.zero_grad()
             loss.backward()

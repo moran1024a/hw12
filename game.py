@@ -4,7 +4,7 @@ import json
 import time
 import logging
 from dataclasses import dataclass, asdict
-from typing import Optional, Dict, Any, List, Tuple
+from typing import Optional, Dict, Any, List
 
 import gymnasium as gym
 import numpy as np
@@ -15,8 +15,14 @@ class StepResult:
     state: np.ndarray
     reward: float
     done: bool
+    terminated: bool
     truncated: bool
     info: Dict[str, Any]
+
+    # 新增：终局标签，非终局时默认为 0
+    success: int = 0
+    crash: int = 0
+    timeout: int = 0
 
 
 @dataclass
@@ -49,15 +55,6 @@ class LunarLanderGame:
         save_step_trace: bool = False,
         max_action_trace_len: int = 5000,
     ):
-        """
-        Args:
-            env_name: Gymnasium 环境名
-            seed: 随机种子
-            render_mode: None / "human" / "rgb_array"
-            log_dir: 日志目录
-            save_step_trace: 是否保存每一步的详细轨迹到 csv
-            max_action_trace_len: 最多缓存多少个动作，防止极端情况占用过大内存
-        """
         self.env_name = env_name
         self.seed = seed
         self.render_mode = render_mode
@@ -91,9 +88,6 @@ class LunarLanderGame:
             f"state_dim={self.state_dim}, action_dim={self.action_dim}")
         self.logger.info(f"seed={self.seed}, render_mode={self.render_mode}")
 
-    # =========================
-    # 初始化相关
-    # =========================
     def _init_logger(self) -> None:
         self.logger = logging.getLogger(f"LunarLanderGame_{id(self)}")
         self.logger.setLevel(logging.INFO)
@@ -145,18 +139,15 @@ class LunarLanderGame:
                     "action",
                     "reward",
                     "done",
+                    "terminated",
                     "truncated",
+                    "success",
+                    "crash",
+                    "timeout",
                     "state_json"
                 ])
 
-    # =========================
-    # 核心接口
-    # =========================
     def reset(self, seed: Optional[int] = None) -> np.ndarray:
-        """
-        开始新回合，返回初始状态。
-        训练时通常每个 episode 开头调用一次。
-        """
         actual_seed = self.seed if seed is None else seed
         state, info = self.env.reset(seed=actual_seed)
 
@@ -172,10 +163,6 @@ class LunarLanderGame:
         return self.current_state.copy()
 
     def step(self, action: int) -> StepResult:
-        """
-        输入动作，返回一步交互结果。
-        训练代码只需要调用这个函数。
-        """
         if self.current_state is None:
             raise RuntimeError(
                 "Environment has not been reset. Call reset() before step().")
@@ -191,37 +178,51 @@ class LunarLanderGame:
         if len(self.current_episode_actions) < self.max_action_trace_len:
             self.current_episode_actions.append(int(action))
 
+        self.current_state = next_state
+
+        # 默认非终局标签
+        success = 0
+        crash = 0
+        timeout = 0
+
+        if done:
+            stats = self._finalize_episode(terminated=bool(
+                terminated), truncated=bool(truncated))
+            success = stats.success
+            crash = stats.crash
+            timeout = stats.timeout
+
         if self.save_step_trace:
             self._append_step_trace(
-                episode_idx=self.current_episode_idx,
+                episode_idx=self.current_episode_idx if not done else self.current_episode_idx - 1,
                 step_idx=self.current_episode_steps,
                 action=int(action),
                 reward=float(reward),
-                done=bool(terminated),
+                done=done,
+                terminated=bool(terminated),
                 truncated=bool(truncated),
+                success=success,
+                crash=crash,
+                timeout=timeout,
                 state=next_state,
             )
-
-        self.current_state = next_state
-
-        if done:
-            self._finalize_episode(terminated=terminated, truncated=truncated)
 
         return StepResult(
             state=next_state.copy(),
             reward=float(reward),
             done=done,
+            terminated=bool(terminated),
             truncated=bool(truncated),
             info=info,
+            success=success,
+            crash=crash,
+            timeout=timeout,
         )
 
     def close(self) -> None:
         self.env.close()
         self.logger.info("Environment closed.")
 
-    # =========================
-    # 辅助训练接口
-    # =========================
     def get_state_dim(self) -> int:
         return self.state_dim
 
@@ -248,10 +249,6 @@ class LunarLanderGame:
         actions: Optional[List[int]] = None,
         as_json: bool = False
     ) -> None:
-        """
-        导出动作序列。
-        默认导出当前 episode 的动作列表。
-        """
         if actions is None:
             actions = self.current_episode_actions
 
@@ -273,20 +270,8 @@ class LunarLanderGame:
         seed: Optional[int] = None,
         return_trajectory: bool = True
     ) -> Dict[str, Any]:
-        """
-        用一个策略函数跑完整个 episode。
-        policy_fn: 输入 state(np.ndarray)，输出 action(int)
-
-        返回：
-        {
-            "total_reward": ...,
-            "actions": [...],
-            "trajectory": [...]
-        }
-        """
         state = self.reset(seed=seed)
         done = False
-
         trajectory = []
 
         while not done:
@@ -300,7 +285,11 @@ class LunarLanderGame:
                     "reward": result.reward,
                     "next_state": result.state.tolist(),
                     "done": result.done,
+                    "terminated": result.terminated,
                     "truncated": result.truncated,
+                    "success": result.success,
+                    "crash": result.crash,
+                    "timeout": result.timeout,
                 })
 
             state = result.state
@@ -309,6 +298,9 @@ class LunarLanderGame:
         output = {
             "total_reward": self.last_episode_stats.total_reward if self.last_episode_stats else None,
             "actions": self.get_current_episode_actions(),
+            "success": self.last_episode_stats.success if self.last_episode_stats else 0,
+            "crash": self.last_episode_stats.crash if self.last_episode_stats else 0,
+            "timeout": self.last_episode_stats.timeout if self.last_episode_stats else 0,
         }
 
         if return_trajectory:
@@ -316,9 +308,6 @@ class LunarLanderGame:
 
         return output
 
-    # =========================
-    # 内部记录逻辑
-    # =========================
     def _append_step_trace(
         self,
         episode_idx: int,
@@ -326,7 +315,11 @@ class LunarLanderGame:
         action: int,
         reward: float,
         done: bool,
+        terminated: bool,
         truncated: bool,
+        success: int,
+        crash: int,
+        timeout: int,
         state: np.ndarray,
     ) -> None:
         with open(self.step_csv_path, "a", newline="", encoding="utf-8") as f:
@@ -337,7 +330,11 @@ class LunarLanderGame:
                 action,
                 reward,
                 int(done),
+                int(terminated),
                 int(truncated),
+                int(success),
+                int(crash),
+                int(timeout),
                 json.dumps(state.tolist(), ensure_ascii=False),
             ])
 
@@ -354,14 +351,11 @@ class LunarLanderGame:
                 stats.elapsed_time_sec,
             ])
 
-    def _finalize_episode(self, terminated: bool, truncated: bool) -> None:
+    def _finalize_episode(self, terminated: bool, truncated: bool) -> EpisodeStats:
         elapsed = time.time() - \
             self.current_episode_start_time if self.current_episode_start_time else 0.0
 
-        # LunarLander 没有官方 success flag，这里做一个实用型近似判断：
-        # - truncated: 视为超时
-        # - 非 truncated 且总奖励较高: 近似视为成功
-        # - 否则近似视为坠毁或失败
+        # 这里仍保留你的“实用型近似判断”
         timeout = int(bool(truncated))
         success = int((not truncated) and (
             self.current_episode_reward >= 200.0))
@@ -395,10 +389,8 @@ class LunarLanderGame:
         )
 
         self.current_episode_idx += 1
+        return stats
 
-    # =========================
-    # 可选：简易训练日志输出
-    # =========================
     def log_training_info(
         self,
         episode_idx: int,
@@ -418,7 +410,6 @@ class LunarLanderGame:
 
 
 if __name__ == "__main__":
-    # 简单自测：随机策略跑一回合
     game = LunarLanderGame(
         env_name="LunarLander-v3",
         seed=42,
@@ -438,6 +429,8 @@ if __name__ == "__main__":
 
     print("Last episode stats:")
     print(asdict(game.get_last_episode_stats()))
+    print("Last step result:")
+    print(result)
 
     game.save_action_list("./logs/random_action_list.txt")
     game.close()
