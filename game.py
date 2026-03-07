@@ -148,8 +148,10 @@ class LunarLanderGame:
                 ])
 
     def reset(self, seed: Optional[int] = None) -> np.ndarray:
-        actual_seed = self.seed if seed is None else seed
-        state, info = self.env.reset(seed=actual_seed)
+        if seed is not None:
+            state, info = self.env.reset(seed=seed)
+        else:
+            state, info = self.env.reset()
 
         self.current_state = np.asarray(state, dtype=np.float32)
         self.current_episode_reward = 0.0
@@ -158,7 +160,7 @@ class LunarLanderGame:
         self.current_episode_start_time = time.time()
 
         self.logger.info(
-            f"[Episode {self.current_episode_idx}] reset | seed={actual_seed}"
+            f"[Episode {self.current_episode_idx}] reset | seed={seed}"
         )
         return self.current_state.copy()
 

@@ -5,6 +5,7 @@ from torch.distributions import Categorical
 import os
 import random
 import matplotlib.pyplot as plt
+import numpy as np
 
 from game import LunarLanderGame
 

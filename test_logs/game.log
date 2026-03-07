@@ -1520,3 +1520,324 @@
 2026-03-07 20:09:23 | INFO | state_dim=8, action_dim=4
 2026-03-07 20:09:23 | INFO | seed=20260319, render_mode=human
 2026-03-07 20:09:24 | INFO | [Episode 0] reset | seed=20260319
+2026-03-07 20:34:34 | INFO | LunarLanderGame initialized.
+2026-03-07 20:34:34 | INFO | env_name=LunarLander-v3
+2026-03-07 20:34:34 | INFO | state_dim=8, action_dim=4
+2026-03-07 20:34:34 | INFO | seed=20260307, render_mode=None
+2026-03-07 20:34:34 | INFO | Environment closed.
+2026-03-07 20:34:34 | INFO | LunarLanderGame initialized.
+2026-03-07 20:34:34 | INFO | env_name=LunarLander-v3
+2026-03-07 20:34:34 | INFO | state_dim=8, action_dim=4
+2026-03-07 20:34:34 | INFO | seed=20260307, render_mode=human
+2026-03-07 20:34:34 | INFO | [Episode 0] reset | seed=None
+2026-03-07 20:34:39 | INFO | [Episode 0] New best reward: 279.039
+2026-03-07 20:34:39 | INFO | [Episode 0] finished | reward=279.039 | steps=258 | success=1 | crash=0 | timeout=0 | time=5.37s
+2026-03-07 20:34:39 | INFO | Environment closed.
+2026-03-07 20:34:39 | INFO | LunarLanderGame initialized.
+2026-03-07 20:34:39 | INFO | env_name=LunarLander-v3
+2026-03-07 20:34:39 | INFO | state_dim=8, action_dim=4
+2026-03-07 20:34:39 | INFO | seed=20260308, render_mode=human
+2026-03-07 20:34:40 | INFO | [Episode 0] reset | seed=None
+2026-03-07 20:34:42 | INFO | [Episode 0] New best reward: -48.453
+2026-03-07 20:34:42 | INFO | [Episode 0] finished | reward=-48.453 | steps=90 | success=0 | crash=1 | timeout=0 | time=1.84s
+2026-03-07 20:34:42 | INFO | Environment closed.
+2026-03-07 20:34:42 | INFO | LunarLanderGame initialized.
+2026-03-07 20:34:42 | INFO | env_name=LunarLander-v3
+2026-03-07 20:34:42 | INFO | state_dim=8, action_dim=4
+2026-03-07 20:34:42 | INFO | seed=20260309, render_mode=human
+2026-03-07 20:34:42 | INFO | [Episode 0] reset | seed=None
+2026-03-07 20:34:44 | INFO | [Episode 0] New best reward: -63.748
+2026-03-07 20:34:44 | INFO | [Episode 0] finished | reward=-63.748 | steps=82 | success=0 | crash=1 | timeout=0 | time=1.69s
+2026-03-07 20:34:44 | INFO | Environment closed.
+2026-03-07 20:34:44 | INFO | LunarLanderGame initialized.
+2026-03-07 20:34:44 | INFO | env_name=LunarLander-v3
+2026-03-07 20:34:44 | INFO | state_dim=8, action_dim=4
+2026-03-07 20:34:44 | INFO | seed=20260310, render_mode=human
+2026-03-07 20:34:45 | INFO | [Episode 0] reset | seed=None
+2026-03-07 20:34:46 | INFO | [Episode 0] New best reward: -20.533
+2026-03-07 20:34:46 | INFO | [Episode 0] finished | reward=-20.533 | steps=63 | success=0 | crash=1 | timeout=0 | time=1.29s
+2026-03-07 20:34:46 | INFO | Environment closed.
+2026-03-07 20:34:46 | INFO | LunarLanderGame initialized.
+2026-03-07 20:34:46 | INFO | env_name=LunarLander-v3
+2026-03-07 20:34:46 | INFO | state_dim=8, action_dim=4
+2026-03-07 20:34:46 | INFO | seed=20260311, render_mode=human
+2026-03-07 20:34:46 | INFO | [Episode 0] reset | seed=None
+2026-03-07 20:34:48 | INFO | [Episode 0] New best reward: -69.213
+2026-03-07 20:34:48 | INFO | [Episode 0] finished | reward=-69.213 | steps=84 | success=0 | crash=1 | timeout=0 | time=1.71s
+2026-03-07 20:34:48 | INFO | Environment closed.
+2026-03-07 20:34:48 | INFO | LunarLanderGame initialized.
+2026-03-07 20:34:48 | INFO | env_name=LunarLander-v3
+2026-03-07 20:34:48 | INFO | state_dim=8, action_dim=4
+2026-03-07 20:34:48 | INFO | seed=20260312, render_mode=human
+2026-03-07 20:34:49 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:01:51 | INFO | LunarLanderGame initialized.
+2026-03-07 21:01:51 | INFO | env_name=LunarLander-v3
+2026-03-07 21:01:51 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:01:51 | INFO | seed=20260307, render_mode=None
+2026-03-07 21:01:51 | INFO | Environment closed.
+2026-03-07 21:01:51 | INFO | LunarLanderGame initialized.
+2026-03-07 21:01:51 | INFO | env_name=LunarLander-v3
+2026-03-07 21:01:51 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:01:51 | INFO | seed=20260307, render_mode=human
+2026-03-07 21:01:51 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:01:55 | INFO | [Episode 0] New best reward: 236.761
+2026-03-07 21:01:55 | INFO | [Episode 0] finished | reward=236.761 | steps=172 | success=1 | crash=0 | timeout=0 | time=3.53s
+2026-03-07 21:01:55 | INFO | Environment closed.
+2026-03-07 21:01:55 | INFO | LunarLanderGame initialized.
+2026-03-07 21:01:55 | INFO | env_name=LunarLander-v3
+2026-03-07 21:01:55 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:01:55 | INFO | seed=20260308, render_mode=human
+2026-03-07 21:01:55 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:01:59 | INFO | [Episode 0] New best reward: 307.280
+2026-03-07 21:01:59 | INFO | [Episode 0] finished | reward=307.280 | steps=187 | success=1 | crash=0 | timeout=0 | time=3.97s
+2026-03-07 21:02:00 | INFO | Environment closed.
+2026-03-07 21:02:00 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:00 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:00 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:00 | INFO | seed=20260309, render_mode=human
+2026-03-07 21:02:00 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260307, render_mode=None
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260307, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 295.571
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=295.571 | steps=241 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260308, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 298.167
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=298.167 | steps=247 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260309, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 248.224
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=248.224 | steps=206 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260310, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 266.758
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=266.758 | steps=212 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260311, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 272.293
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=272.293 | steps=366 | success=1 | crash=0 | timeout=0 | time=0.03s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260312, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 269.261
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=269.261 | steps=203 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260313, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 252.036
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=252.036 | steps=197 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260314, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 286.806
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=286.806 | steps=241 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260315, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 292.971
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=292.971 | steps=193 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260316, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 288.046
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=288.046 | steps=259 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260317, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 303.554
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=303.554 | steps=216 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260318, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 305.011
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=305.011 | steps=230 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260319, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 304.345
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=304.345 | steps=255 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260320, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 261.231
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=261.231 | steps=189 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260321, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 246.022
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=246.022 | steps=184 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260322, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 287.834
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=287.834 | steps=191 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260323, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 297.445
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=297.445 | steps=215 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260324, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 254.513
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=254.513 | steps=175 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260325, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 294.456
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=294.456 | steps=190 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260326, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 313.076
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=313.076 | steps=214 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260327, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 272.870
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=272.870 | steps=221 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260328, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 295.482
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=295.482 | steps=168 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260329, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 263.101
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=263.101 | steps=170 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260330, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 293.542
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=293.542 | steps=197 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260331, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 275.623
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=275.623 | steps=212 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260332, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 277.355
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=277.355 | steps=222 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260333, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 274.067
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=274.067 | steps=241 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260334, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 293.115
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=293.115 | steps=186 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260335, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 269.978
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=269.978 | steps=169 | success=1 | crash=0 | timeout=0 | time=0.01s
+2026-03-07 21:02:20 | INFO | Environment closed.
+2026-03-07 21:02:20 | INFO | LunarLanderGame initialized.
+2026-03-07 21:02:20 | INFO | env_name=LunarLander-v3
+2026-03-07 21:02:20 | INFO | state_dim=8, action_dim=4
+2026-03-07 21:02:20 | INFO | seed=20260336, render_mode=None
+2026-03-07 21:02:20 | INFO | [Episode 0] reset | seed=None
+2026-03-07 21:02:20 | INFO | [Episode 0] New best reward: 291.806
+2026-03-07 21:02:20 | INFO | [Episode 0] finished | reward=291.806 | steps=184 | success=1 | crash=0 | timeout=0 | time=0.02s
+2026-03-07 21:02:20 | INFO | Environment closed.
