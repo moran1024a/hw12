@@ -1,0 +1,636 @@
+# ==============================================================
+# PPO训练脚本 - 版本5
+# 本次改进目标平均分数300+
+# 说明：
+#    - 状态归一化（Observation Normalization）
+#    - 奖励缩放（Reward Scaling，不是直接reward标准化）
+#    - 学习率调度（线性衰减）
+# ==============================================================
+
+import torch
+import torch.nn as nn
+from torch.distributions import Categorical
+
+import os
+import random
+import matplotlib.pyplot as plt
+import numpy as np
+
+from game import LunarLanderGame
+
+
+class model_v1(nn.Module):
+    def __init__(self, state_dim, action_dim):
+        super(model_v1, self).__init__()
+
+        # 共享层
+        self.shared = nn.Sequential(
+            nn.Linear(state_dim, 128),
+            nn.ReLU(),
+            nn.Linear(128, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU()
+        )
+
+        # 动作决策层
+        self.actor = nn.Sequential(
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, action_dim)
+        )
+
+        # 状态价值评估层
+        self.critic = nn.Sequential(
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, 1)
+        )
+
+    def forward(self, state):
+        # 共享层提取特征
+        shared_out = self.shared(state)
+        # 分别计算动作 logits 和状态价值
+        action_logits = self.actor(shared_out)
+        state_value = self.critic(shared_out)
+
+        return action_logits, state_value
+
+    def act(self, state):
+        # 获取动作 logits
+        action_logits, state_value = self.forward(state)
+
+        dist = Categorical(logits=action_logits)  # 获取动作分布
+        action = dist.sample()  # 采样动作
+        log_prob = dist.log_prob(action)  # 计算动作的 log 概率
+
+        # 使用 detach() 将返回值从计算图中分离，避免梯度传播
+        return action.item(), log_prob.item(), state_value.item()
+
+    def get_value(self, state):
+        '''下一步状态价值计算，供 GAE 使用'''
+        _, state_value = self.forward(state)
+        return state_value.item()
+
+    def evaluate(self, states, actions):
+        '''
+        输入一批 states 和 actions，
+        返回这些动作在当前策略下的 log_prob、状态价值和熵
+        '''
+        # 获取动作 logits 和状态价值
+        action_logits, state_value = self.forward(states)
+
+        dist = Categorical(logits=action_logits)  # 获取动作分布
+        log_prob = dist.log_prob(actions)  # 计算动作的 log 概率
+        entropy = dist.entropy()  # 计算动作分布的熵
+
+        return log_prob, state_value.squeeze(-1), entropy
+
+
+class buffer:
+    '''经验缓冲区'''
+
+    def __init__(self):
+        self.states = []
+        self.actions = []
+        self.rewards = []
+        self.log_probs = []
+        self.state_values = []
+        self.dones = []
+        # GAE 计算条件 next_state_values
+        self.next_state_values = []
+
+    def store(self, state, action, reward, log_prob, state_value, next_state_value, done=False):
+        self.states.append(state)
+        self.actions.append(action)
+        self.rewards.append(reward)
+        self.log_probs.append(log_prob)
+        self.state_values.append(state_value)
+        self.next_state_values.append(next_state_value)
+        self.dones.append(done)
+
+    def clear(self):
+        self.states = []
+        self.actions = []
+        self.rewards = []
+        self.log_probs = []
+        self.state_values = []
+        self.dones = []
+        self.next_state_values = []
+
+
+def moving_average(data, window=50):
+    result = []
+    for i in range(len(data)):
+        left = max(0, i - window + 1)
+        result.append(sum(data[left:i + 1]) / (i - left + 1))
+    return result
+
+
+def compute_gae(rewards, values, next_values, dones, gamma=0.99, gae_lambda=0.95):
+    '''计算 GAE 优势函数和 returns'''
+    advantages = []
+    gae = 0.0
+
+    for t in reversed(range(len(rewards))):
+        mask = 1.0 - float(dones[t])
+        delta = rewards[t] + gamma * next_values[t] * mask - values[t]
+        gae = delta + gamma * gae_lambda * mask * gae
+        advantages.insert(0, gae)
+
+    returns = [adv + v for adv, v in zip(advantages, values)]
+    return advantages, returns
+
+
+class RunningMeanStd:
+    '''
+    运行时均值方差统计器
+    - 给状态归一化提供 mean / std
+    - 给奖励缩放提供 return 的方差统计
+    '''
+
+    def __init__(self, shape=()):
+        self.mean = np.zeros(shape, dtype=np.float64)
+        self.var = np.ones(shape, dtype=np.float64)
+        self.count = 1e-4  # 避免初始除零
+
+    def update(self, x):
+        x = np.asarray(x, dtype=np.float64)
+
+        # 如果是一条状态，例如 shape=(8,)
+        # 则扩展成 (1, 8) 方便统一处理
+        if x.ndim == 1:
+            x = x[None, :]
+
+        batch_mean = np.mean(x, axis=0)
+        batch_var = np.var(x, axis=0)
+        batch_count = x.shape[0]
+
+        self._update_from_moments(batch_mean, batch_var, batch_count)
+
+    def _update_from_moments(self, batch_mean, batch_var, batch_count):
+        delta = batch_mean - self.mean
+        total_count = self.count + batch_count
+
+        new_mean = self.mean + delta * batch_count / total_count
+
+        m_a = self.var * self.count
+        m_b = batch_var * batch_count
+        m2 = m_a + m_b + np.square(delta) * self.count * \
+            batch_count / total_count
+        new_var = m2 / total_count
+
+        self.mean = new_mean
+        self.var = new_var
+        self.count = total_count
+
+    @property
+    def std(self):
+        return np.sqrt(self.var + 1e-8)
+
+
+def normalize_obs(obs, obs_rms, clip_range=10.0):
+    '''
+    环境归一化函数
+    - 对环境状态做标准化
+    - 再做clip，避免极端值干扰训练
+    '''
+    obs = np.asarray(obs, dtype=np.float32)
+    obs_norm = (obs - obs_rms.mean) / obs_rms.std
+    obs_norm = np.clip(obs_norm, -clip_range, clip_range)
+    return obs_norm.astype(np.float32)
+
+
+class RewardScaler:
+    '''
+    奖励缩放器
+    - 对 discounted return 的波动范围做统计，再用它缩放 reward
+    '''
+
+    def __init__(self, gamma=0.99):
+        self.gamma = gamma
+        self.running_return = 0.0
+        self.return_rms = RunningMeanStd(shape=())
+
+    def reset(self):
+        # 每个 episode 结束都要重置
+        self.running_return = 0.0
+
+    def scale(self, reward):
+        # 维护折扣累计回报
+        self.running_return = self.gamma * self.running_return + reward
+
+        # 注意：RunningMeanStd.update 对标量要传 shape=(1,) 数组
+        self.return_rms.update(
+            np.array([[self.running_return]], dtype=np.float64))
+
+        # 用 return 的标准差缩放即时 reward
+        scaled_reward = reward / (np.sqrt(self.return_rms.var) + 1e-8)
+
+        # clip 防止极端异常值
+        scaled_reward = np.clip(scaled_reward, -10.0, 10.0)
+        return float(scaled_reward)
+
+
+def linear_lr_decay(initial_lr, final_lr, progress):
+    '''
+    线性学习率衰减
+    参数：
+        initial_lr: 初始学习率
+        final_lr:   最终学习率下限
+        progress:   当前训练进度，范围 [0, 1]
+    返回：
+        current_lr: 当前应使用的学习率
+    '''
+    progress = min(max(progress, 0.0), 1.0)
+    current_lr = initial_lr + (final_lr - initial_lr) * progress
+    return current_lr
+
+
+# ==============================
+
+
+# 环境初始化
+game = LunarLanderGame(
+    env_name="LunarLander-v3",
+    seed=42,
+    # render_mode="human",
+    log_dir="./logs",
+    save_step_trace=False
+)
+
+
+# 超参数
+actor_lr = 3e-4             # 初始acto/shared学习率
+critic_lr = 2e-4            # 初始critic学习率
+actor_lr_end = 3e-5         # 最终actor/shared 学习率
+critic_lr_end = 5e-5        # 最终critic 学习率
+
+gamma = 0.99                # 折扣因子
+eps_clip = 0.2              # PPO裁剪系数
+value_coef = 0.5            # critic损失权重
+entropy_coef_start = 0.01   # 初始熵奖励权重
+entropy_coef_end = 0.0005    # 最终熵奖励权重（训练后期减少探索鼓励）
+updates = 1000              # PPO 更新次数
+
+# PPO稳定参数
+gae_lambda = 0.95           # GAE lambda 参数（取值范围 [0, 1]，控制 bias-variance 权衡）
+rollout_steps = 4096        # 每次更新前收集的步数
+ppo_update_epochs = 8       # 同一批数据重复训练次数
+mini_batch_size = 256       # mini-batch 大小
+max_grad_norm = 0.5         # 梯度裁剪
+
+use_obs_norm = True         # 状态归一化
+use_reward_scaling = True   # 奖励缩放
+
+# 初始化运行时均值方差统计器和奖励缩放器
+obs_rms = RunningMeanStd(shape=(game.get_state_dim(),))
+reward_scaler = RewardScaler(gamma=0.99)
+
+# 模型和缓冲区初始化
+model = model_v1(game.get_state_dim(), game.get_action_dim())
+buffer = buffer()
+
+# 优化器初始化，注意共享层和 actor 同学习率，critic 独立学习率
+optimizer = torch.optim.Adam([
+    {"params": model.shared.parameters(), "lr": actor_lr},   # 参数组0：shared
+    {"params": model.actor.parameters(), "lr": actor_lr},    # 参数组1：actor
+    {"params": model.critic.parameters(), "lr": critic_lr},  # 参数组2：critic
+])
+
+# cuda
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
+model.to(device)
+
+# 保存路径
+save_dir = "./ppo_outputs"
+os.makedirs(save_dir, exist_ok=True)
+
+# 数据记录
+reward_history = []          # 每个完整 episode 的原始环境 reward（不是缩放后的reward）
+actor_loss_history = []      # 训练过程中 actor loss 的历史记录
+critic_loss_history = []     # 训练过程中 critic loss 的历史记录
+entropy_history = []         # 训练过程中 policy entropy 的历史记录
+total_loss_history = []      # 训练过程中总 loss 的历史记录
+actor_lr_history = []        # 记录每次 update 的 actor/shared 学习率
+critic_lr_history = []       # 记录每次 update 的 critic 学习率
+
+best_avg_reward = -float("inf")  # 目前最优平均奖励
+save_window = 50  # 计算平均奖励的窗口大小
+
+
+state = game.reset()
+
+# 先用初始状态更新统计量，再做归一化
+if use_obs_norm:
+    obs_rms.update(state)
+    state = normalize_obs(state, obs_rms)
+
+# 每个episode开始前重置 reward scaler
+reward_scaler.reset()
+
+current_episode_reward = 0.0  # 统计当前 episode 的原始奖励总和
+current_episode_steps = 0     # 统计当前 episode 的步数
+
+for update_idx in range(updates):
+    '''
+    此部分改为按照PPO更新次数循环，每次更新需要收集 rollout_steps 条数据
+    '''
+
+    # 训练进度
+    progress = update_idx / max(1, updates - 1)
+    # 决策层学习率更新
+    current_actor_lr = linear_lr_decay(
+        initial_lr=actor_lr,
+        final_lr=actor_lr_end,
+        progress=progress
+    )
+    # 价值层学习率更新
+    current_critic_lr = linear_lr_decay(
+        initial_lr=critic_lr,
+        final_lr=critic_lr_end,
+        progress=progress
+    )
+    # 更新优化器中对应参数组的学习率
+    optimizer.param_groups[0]["lr"] = current_actor_lr   # shared 跟随 actor 学习率
+    optimizer.param_groups[1]["lr"] = current_actor_lr   # actor 学习率
+    optimizer.param_groups[2]["lr"] = current_critic_lr  # critic 学习率
+
+    actor_lr_history.append(current_actor_lr)
+    critic_lr_history.append(current_critic_lr)
+
+    collected_steps = 0
+
+    # 数据采集
+    while collected_steps < rollout_steps:
+        # 采样动作
+        # 这里的 state 已经是“归一化后的状态”（如果开了 use_obs_norm）
+        action, log_prob, state_value = model.act(
+            torch.FloatTensor(state).to(device)
+        )
+
+        # 环境执行
+        # 注意：game.step(action) 返回的 reward 是原始环境奖励，不是缩放后的 reward
+        result = game.step(action)
+        raw_next_state = result.state
+        raw_reward = result.reward
+        done = result.done
+
+        # 对 next_state 做观测归一化
+        if use_obs_norm:
+            # 先更新统计量，再归一化
+            obs_rms.update(raw_next_state)
+            next_state = normalize_obs(raw_next_state, obs_rms)
+        else:
+            next_state = raw_next_state
+
+        # 对 reward 做缩放
+        if use_reward_scaling:
+            reward = reward_scaler.scale(raw_reward)
+        else:
+            reward = raw_reward
+
+        # next_state_value 计算，供 GAE 使用
+        if done:
+            next_state_value = 0.0
+        else:
+            next_state_value = model.get_value(
+                torch.FloatTensor(next_state).to(device)
+            )
+
+        # buffer 保存轨迹数据
+        # 注意：
+        # - state / next_state 存的是归一化后的状态（若开启）
+        # - reward 存的是缩放后的 reward（若开启）
+        buffer.store(
+            state, action, reward, log_prob,
+            state_value, next_state_value, done
+        )
+
+        # 更新 rollout 状态
+        state = next_state
+        collected_steps += 1
+
+        # 统计原始奖励总和和 episode 步数
+        current_episode_reward += raw_reward
+        current_episode_steps += 1
+
+        # episode 结束后记录奖励并重置环境
+        if done:
+            reward_history.append(current_episode_reward)
+            print(
+                f"[Episode Finished] reward={current_episode_reward:.2f} | steps={current_episode_steps}"
+            )
+
+            state = game.reset()
+
+            # 注意：这里的 state 是原始环境状态，需要先更新统计量再归一化
+            if use_obs_norm:
+                obs_rms.update(state)
+                state = normalize_obs(state, obs_rms)
+
+            # 每个 episode 结束都要重置 reward scaler 的累计回报
+            reward_scaler.reset()
+
+            current_episode_reward = 0.0
+            current_episode_steps = 0
+
+    # ============================================================
+    # PPO 核心训练
+    # ============================================================
+    # 读取 buffer 中轨迹数据并转换为张量
+    states = torch.FloatTensor(
+        np.array(buffer.states, dtype=np.float32)).to(device)
+    actions = torch.LongTensor(buffer.actions).to(device)
+    old_log_probs = torch.FloatTensor(buffer.log_probs).to(device)
+    old_state_values = torch.FloatTensor(buffer.state_values).to(device)
+    next_state_values = torch.FloatTensor(buffer.next_state_values).to(device)
+    rewards = buffer.rewards
+    dones = buffer.dones
+
+    # 优势函数修改为 GAE：
+    # 1. 原始 returns - V(s) 方差较大，训练容易崩
+    advantages, returns = compute_gae(
+        rewards=rewards,
+        values=old_state_values.tolist(),
+        next_values=next_state_values.tolist(),
+        dones=dones,
+        gamma=gamma,
+        gae_lambda=gae_lambda
+    )
+
+    advantages = torch.FloatTensor(advantages).to(device)
+    returns = torch.FloatTensor(returns).to(device)
+
+    # 标准化 advantage，降低训练方差
+    advantages = (advantages - advantages.mean()) / \
+        (advantages.std(unbiased=False) + 1e-8)
+
+    # PPO更新修改为mini-batch
+    data_size = states.size(0)
+
+    for _ in range(ppo_update_epochs):
+        indices = list(range(data_size))
+        random.shuffle(indices)
+
+        for start in range(0, data_size, mini_batch_size):
+            end = start + mini_batch_size
+            batch_idx = indices[start:end]
+
+            batch_states = states[batch_idx]
+            batch_actions = actions[batch_idx]
+            batch_old_log_probs = old_log_probs[batch_idx]
+            batch_advantages = advantages[batch_idx]
+            batch_returns = returns[batch_idx]
+
+            new_log_probs, new_state_values, entropy = model.evaluate(
+                batch_states, batch_actions
+            )
+
+            ratio = torch.exp(new_log_probs - batch_old_log_probs)
+
+            surr1 = ratio * batch_advantages
+            surr2 = torch.clamp(ratio, 1 - eps_clip, 1 +
+                                eps_clip) * batch_advantages
+            actor_loss = -torch.min(surr1, surr2).mean()
+
+            critic_loss_fn = nn.SmoothL1Loss()
+            critic_loss = critic_loss_fn(new_state_values, batch_returns)
+
+            entropy_loss = entropy.mean()
+            progress_entropy = update_idx / max(1, updates - 1)
+            current_entropy_coef = entropy_coef_start * \
+                (1 - progress_entropy) + entropy_coef_end * progress_entropy
+
+            loss = actor_loss + value_coef * critic_loss - \
+                current_entropy_coef * entropy_loss
+
+            optimizer.zero_grad()
+            loss.backward()
+
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
+            optimizer.step()
+
+    # 记录训练指标
+    actor_loss_history.append(actor_loss.item())
+    critic_loss_history.append(critic_loss.item())
+    entropy_history.append(entropy_loss.item())
+    total_loss_history.append(loss.item())
+
+    # 根据最近 save_window 个 episode 的平均奖励保存最优模型
+    # 注意：这里的 reward_history 仍然是原始环境得分，便于真实评估训练效果
+    if len(reward_history) > 0:
+        avg_reward = sum(reward_history[-save_window:]) / \
+            len(reward_history[-save_window:])
+    else:
+        avg_reward = 0.0
+
+    # 保存最新模型
+    torch.save(
+        {
+            "update_idx": update_idx,
+            "model_state_dict": model.state_dict(),
+            "optimizer_state_dict": optimizer.state_dict(),
+            "avg_reward": avg_reward,
+            "current_actor_lr": current_actor_lr,
+            "current_critic_lr": current_critic_lr,
+            "obs_rms_mean": obs_rms.mean,
+            "obs_rms_var": obs_rms.var,
+            "obs_rms_count": obs_rms.count,
+        },
+        os.path.join(save_dir, "latest_model.pt")
+    )
+
+    if len(reward_history) >= 10 and avg_reward > best_avg_reward:
+        best_avg_reward = avg_reward
+        torch.save(
+            {
+                "update_idx": update_idx,
+                "model_state_dict": model.state_dict(),
+                "optimizer_state_dict": optimizer.state_dict(),
+                "best_avg_reward": best_avg_reward,
+                "current_actor_lr": current_actor_lr,
+                "current_critic_lr": current_critic_lr,
+                "obs_rms_mean": obs_rms.mean,
+                "obs_rms_var": obs_rms.var,
+                "obs_rms_count": obs_rms.count,
+            },
+            os.path.join(save_dir, "best_model.pt")
+        )
+        print(
+            f"[SAVE] best model updated at update {update_idx + 1}, avg_reward={best_avg_reward:.3f}"
+        )
+
+    # 训练信息输出
+    print(
+        f"Update {update_idx + 1}/{updates} | "
+        f"CollectedSteps: {collected_steps} | "
+        f"Episodes: {len(reward_history)} | "
+        f"AvgReward({save_window}): {avg_reward:.2f} | "
+        f"ActorLoss: {actor_loss.item():.4f} | "
+        f"CriticLoss: {critic_loss.item():.4f} | "
+        f"Entropy: {entropy_loss.item():.4f} | "
+        f"ActorLR: {current_actor_lr:.8f} | "
+        f"CriticLR: {current_critic_lr:.8f}"
+    )
+
+    # 清空 buffer
+    buffer.clear()
+
+# ============================================================
+# 训练可视化
+# ============================================================
+ma_reward = moving_average(reward_history, window=save_window)
+
+# reward 曲线
+plt.figure(figsize=(10, 5))
+plt.plot(reward_history, label="Episode Reward")
+plt.plot(ma_reward, label=f"Moving Avg Reward ({save_window})")
+plt.xlabel("Episode")
+plt.ylabel("Reward")
+plt.title("PPO Training Reward Curve")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(os.path.join(save_dir, "reward_curve.png"))
+plt.close()
+
+# loss 曲线
+plt.figure(figsize=(10, 5))
+plt.plot(actor_loss_history, label="Actor Loss")
+plt.plot(critic_loss_history, label="Critic Loss")
+plt.plot(total_loss_history, label="Total Loss")
+plt.xlabel("Update")
+plt.ylabel("Loss")
+plt.title("PPO Training Loss Curve")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(os.path.join(save_dir, "loss_curve.png"))
+plt.close()
+
+# entropy 曲线
+plt.figure(figsize=(10, 5))
+plt.plot(entropy_history, label="Entropy")
+plt.xlabel("Update")
+plt.ylabel("Entropy")
+plt.title("Policy Entropy Curve")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(os.path.join(save_dir, "entropy_curve.png"))
+plt.close()
+
+# 学习率曲线
+plt.figure(figsize=(10, 5))
+plt.plot(actor_lr_history, label="Actor/Shared LR")
+plt.plot(critic_lr_history, label="Critic LR")
+plt.xlabel("Update")
+plt.ylabel("Learning Rate")
+plt.title("Learning Rate Schedule Curve")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(os.path.join(save_dir, "lr_curve.png"))
+plt.close()
