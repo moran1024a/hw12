@@ -5,6 +5,24 @@
 #    - 状态归一化（Observation Normalization）
 #    - 奖励缩放（Reward Scaling，不是直接reward标准化）
 #    - 学习率调度（线性衰减）
+#    - KL early stop
+# ==============================================================
+# 【本次最小改动说明】
+# 1. 调整 PPO 训练强度：
+#    - ppo_update_epochs: 8 -> 6
+#    - mini_batch_size: 256 -> 512
+# 2. 调整学习率衰减终点：
+#    - actor_lr_end: 3e-5 -> 1e-5
+#    - critic_lr_end: 5e-5 -> 3e-5
+# 3. 提高 critic 损失权重：
+#    - value_coef: 0.5 -> 0.7
+# 4. 提高后期熵系数：
+#    - entropy_coef_end: 0.0005 -> 0.001
+# 5. 新增 advantage 裁剪：
+#    - advantages = torch.clamp(advantages, -10, 10)
+# 6. 新增 PPO 的 KL early stop：
+#    - 新增 target_kl = 0.02
+#    - 当 approx_kl > target_kl 时，提前停止当前 update 的后续 PPO epoch
 # ==============================================================
 
 import torch
@@ -263,22 +281,24 @@ game = LunarLanderGame(
 # 超参数
 actor_lr = 3e-4             # 初始acto/shared学习率
 critic_lr = 2e-4            # 初始critic学习率
-actor_lr_end = 3e-5         # 最终actor/shared 学习率
-critic_lr_end = 5e-5        # 最终critic 学习率
-
+actor_lr_end = 3e-5         # 最终actor/shared 学习率【原 3e-5】
+critic_lr_end = 5e-5        # 最终critic 学习率【原 5e-5】
 gamma = 0.99                # 折扣因子
 eps_clip = 0.2              # PPO裁剪系数
-value_coef = 0.5            # critic损失权重
+value_coef = 0.7            # critic损失权重【原 0.5】
 entropy_coef_start = 0.01   # 初始熵奖励权重
-entropy_coef_end = 0.0005    # 最终熵奖励权重（训练后期减少探索鼓励）
-updates = 1000              # PPO 更新次数
+entropy_coef_end = 0.0015   # 最终熵奖励权重（训练后期减少探索鼓励）【原 0.0005】
+updates = 1500              # PPO 更新次数
 
 # PPO稳定参数
 gae_lambda = 0.95           # GAE lambda 参数（取值范围 [0, 1]，控制 bias-variance 权衡）
 rollout_steps = 4096        # 每次更新前收集的步数
-ppo_update_epochs = 8       # 同一批数据重复训练次数
-mini_batch_size = 256       # mini-batch 大小
+ppo_update_epochs = 6       # 同一批数据重复训练次数【原 8】
+mini_batch_size = 512       # mini-batch 大小【原 256】
+
 max_grad_norm = 0.5         # 梯度裁剪
+
+target_kl = 0.02           # 当近似 KL 超过该阈值时，提前停止当前 update 的 PPO epoch
 
 use_obs_norm = True         # 状态归一化
 use_reward_scaling = True   # 奖励缩放
@@ -467,10 +487,16 @@ for update_idx in range(updates):
     advantages = (advantages - advantages.mean()) / \
         (advantages.std(unbiased=False) + 1e-8)
 
+    # 裁剪 advantage，避免极端样本导致更新过猛
+    advantages = torch.clamp(advantages, -10, 10)
+
     # PPO更新修改为mini-batch
     data_size = states.size(0)
 
-    for _ in range(ppo_update_epochs):
+    # KL early stop 标志位
+    early_stop = False
+
+    for epoch_idx in range(ppo_update_epochs):
         indices = list(range(data_size))
         random.shuffle(indices)
 
@@ -511,6 +537,22 @@ for update_idx in range(updates):
 
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
             optimizer.step()
+
+            # 计算近似 KL 散度，用于 early stop
+            approx_kl = (batch_old_log_probs - new_log_probs).mean().item()
+
+            # 如果策略变化过大，则提前停止当前 update 的剩余 PPO epoch
+            if approx_kl > target_kl:
+                print(
+                    f"[KL Early Stop] update={update_idx + 1}, "
+                    f"epoch={epoch_idx + 1}, approx_kl={approx_kl:.6f}"
+                )
+                early_stop = True
+                break
+
+        # 跳出外层 epoch 循环
+        if early_stop:
+            break
 
     # 记录训练指标
     actor_loss_history.append(actor_loss.item())

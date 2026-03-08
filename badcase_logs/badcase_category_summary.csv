@@ -1,0 +1,4 @@
+﻿category_main,count,ratio,avg_reward,avg_steps
+success,998,0.998,287.11563456408413,162.03907815631263
+poor_terminal_control,1,0.001,19.274009648252445,106.0
+unstable_attitude,1,0.001,195.2235735029129,1000.0

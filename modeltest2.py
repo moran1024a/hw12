@@ -275,7 +275,7 @@ def main():
     # 可调参数
     # =========================
     model_path = "./ppo_outputs/best_model.pt"
-    test_episodes = 1000              # 建议至少 30；更稳一点可以 50 / 100
+    test_episodes = 1000            # 建议至少 30；更稳一点可以 50 / 100
     render = False                  # 批量评估建议 False；想肉眼看时再开 True
     log_dir = "./test_logs"
     csv_path = os.path.join(log_dir, "evaluation_results.csv")

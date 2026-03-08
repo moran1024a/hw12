@@ -1,0 +1,3 @@
+﻿seed,category_main,reward,steps,crash,timeout,category_list
+184,poor_terminal_control,19.274009648252445,106,1,0,crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail
+378,unstable_attitude,195.2235735029129,1000,0,1,timeout|unstable_attitude|oscillating_control|late_stage_fail
