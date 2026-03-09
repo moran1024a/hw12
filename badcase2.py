@@ -957,7 +957,7 @@ def main():
     # 回测局数：
     # - 想快速看结果：100 ~ 200
     # - 想更稳定定位 bad case：500 ~ 2000
-    test_episodes = 1000
+    test_episodes = 100000
 
     # render 建议批量跑时设为 False
     render = False
@@ -967,7 +967,7 @@ def main():
 
     # 是否使用固定种子列表
     use_fixed_seed_list = True
-    base_seed = 42
+    base_seed = 10241024
 
     # 是否保存“最差案例”的完整轨迹 JSON
     # 注意：如果局数很多，轨迹文件会比较大

@@ -481,7 +481,7 @@ def main():
     # ==========================================================
     model_path = "./ppo_outputs/best_model.pt"
 
-    replay_seeds = [378]
+    replay_seeds = [10281799]
 
     # 是否开启环境画面可视化
     # True: 会弹出环境窗口
