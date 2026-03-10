@@ -957,7 +957,7 @@ def main():
     # 回测局数：
     # - 想快速看结果：100 ~ 200
     # - 想更稳定定位 bad case：500 ~ 2000
-    test_episodes = 100000
+    test_episodes = 1000
 
     # render 建议批量跑时设为 False
     render = False

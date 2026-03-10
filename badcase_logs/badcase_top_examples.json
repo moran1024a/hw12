@@ -1,774 +1,192 @@
 {
   "success": [
     {
-      "seed": 10309304,
-      "reward": 230.97673145153988,
-      "steps": 149,
+      "seed": 10241488,
+      "reward": 241.28558213171556,
+      "steps": 183,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10328415,
-      "reward": 231.3085055243524,
+      "seed": 10241171,
+      "reward": 243.45405912599475,
+      "steps": 142,
+      "crash": 0,
+      "timeout": 0,
+      "category_list": "success"
+    },
+    {
+      "seed": 10241874,
+      "reward": 243.59143734883233,
+      "steps": 142,
+      "crash": 0,
+      "timeout": 0,
+      "category_list": "success"
+    },
+    {
+      "seed": 10241741,
+      "reward": 244.21647788677646,
+      "steps": 139,
+      "crash": 0,
+      "timeout": 0,
+      "category_list": "success"
+    },
+    {
+      "seed": 10241269,
+      "reward": 244.39150208859678,
       "steps": 145,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10262152,
-      "reward": 233.03445254059767,
-      "steps": 147,
+      "seed": 10241566,
+      "reward": 244.57260795466857,
+      "steps": 142,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10302575,
-      "reward": 235.09895352180553,
-      "steps": 156,
+      "seed": 10241671,
+      "reward": 244.69102052348728,
+      "steps": 142,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10289823,
-      "reward": 235.29360453288592,
-      "steps": 162,
+      "seed": 10241043,
+      "reward": 245.2260478539963,
+      "steps": 141,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10295420,
-      "reward": 235.36785394636922,
-      "steps": 148,
+      "seed": 10241621,
+      "reward": 245.480279986889,
+      "steps": 149,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10304780,
-      "reward": 235.65131277892866,
-      "steps": 161,
+      "seed": 10241164,
+      "reward": 246.9202757947866,
+      "steps": 143,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10249562,
-      "reward": 235.69162328147553,
-      "steps": 158,
+      "seed": 10241485,
+      "reward": 246.93579930878485,
+      "steps": 141,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10254317,
-      "reward": 236.1958733489861,
-      "steps": 156,
+      "seed": 10241147,
+      "reward": 247.02823325170596,
+      "steps": 144,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10305230,
-      "reward": 236.28002161294893,
-      "steps": 164,
+      "seed": 10241728,
+      "reward": 247.10342177946882,
+      "steps": 138,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10281527,
-      "reward": 236.28607978993952,
-      "steps": 179,
+      "seed": 10241062,
+      "reward": 247.1927829435991,
+      "steps": 144,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10262969,
-      "reward": 236.5192616421096,
-      "steps": 165,
-      "crash": 0,
-      "timeout": 0,
-      "category_list": "success"
-    },
-    {
-      "seed": 10327804,
-      "reward": 236.5905018842131,
-      "steps": 154,
-      "crash": 0,
-      "timeout": 0,
-      "category_list": "success"
-    },
-    {
-      "seed": 10305089,
-      "reward": 236.7005982434968,
+      "seed": 10241503,
+      "reward": 247.2254019868907,
       "steps": 151,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10324793,
-      "reward": 236.72313235078866,
-      "steps": 152,
+      "seed": 10241589,
+      "reward": 247.64757171896525,
+      "steps": 148,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10266077,
-      "reward": 236.7731154433697,
-      "steps": 149,
+      "seed": 10241223,
+      "reward": 247.65848500175716,
+      "steps": 141,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10258540,
-      "reward": 236.8524740477798,
-      "steps": 168,
+      "seed": 10241995,
+      "reward": 247.6910305962774,
+      "steps": 170,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10262001,
-      "reward": 236.9169601595085,
-      "steps": 149,
+      "seed": 10241574,
+      "reward": 247.73624653139353,
+      "steps": 147,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
     },
     {
-      "seed": 10276742,
-      "reward": 237.0830479698183,
-      "steps": 171,
+      "seed": 10241249,
+      "reward": 248.08584116307088,
+      "steps": 145,
       "crash": 0,
       "timeout": 0,
       "category_list": "success"
-    },
-    {
-      "seed": 10294202,
-      "reward": 237.11196404148455,
-      "steps": 149,
-      "crash": 0,
-      "timeout": 0,
-      "category_list": "success"
-    }
-  ],
-  "unstable_attitude": [
-    {
-      "seed": 10339327,
-      "reward": 12.563501559182242,
-      "steps": 104,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10256258,
-      "reward": 17.68080911221658,
-      "steps": 104,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10311474,
-      "reward": 17.906433666671518,
-      "steps": 106,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10332379,
-      "reward": 18.975330072231586,
-      "steps": 106,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10248687,
-      "reward": 19.70310428394035,
-      "steps": 100,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10268630,
-      "reward": 21.970803594833626,
-      "steps": 101,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10244519,
-      "reward": 22.073306053471214,
-      "steps": 96,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10259024,
-      "reward": 24.426591450559428,
-      "steps": 99,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10243467,
-      "reward": 25.093185950064665,
-      "steps": 109,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10261795,
-      "reward": 26.948039279164874,
-      "steps": 93,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10308351,
-      "reward": 27.076544313626087,
-      "steps": 113,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10319449,
-      "reward": 27.178454704951434,
-      "steps": 109,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10280593,
-      "reward": 28.872379171984818,
-      "steps": 96,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10278391,
-      "reward": 29.269874360268147,
-      "steps": 99,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10250877,
-      "reward": 29.4980541476574,
-      "steps": 110,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10261836,
-      "reward": 30.151346838284695,
-      "steps": 95,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10333175,
-      "reward": 30.38052777852144,
-      "steps": 98,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10285021,
-      "reward": 31.256740917867205,
-      "steps": 105,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10259676,
-      "reward": 32.315455713816476,
-      "steps": 137,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|late_stage_fail"
-    },
-    {
-      "seed": 10272963,
-      "reward": 32.66233799331596,
-      "steps": 116,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
-    }
-  ],
-  "oscillating_control": [
-    {
-      "seed": 10321058,
-      "reward": 167.49102103170713,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10277195,
-      "reward": 167.81755937467352,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10261981,
-      "reward": 174.43734091301582,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10242097,
-      "reward": 174.45225303082557,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10311823,
-      "reward": 175.26904130507452,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10288034,
-      "reward": 175.52062170878688,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10302311,
-      "reward": 176.36897719868728,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10333700,
-      "reward": 179.38919634797853,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10249904,
-      "reward": 179.45671913856802,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10300904,
-      "reward": 181.4064254901781,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10291009,
-      "reward": 181.53711243454543,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10270950,
-      "reward": 183.8693055252637,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10255517,
-      "reward": 184.20640024915082,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10241769,
-      "reward": 184.31914231929596,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10263437,
-      "reward": 184.42714985692598,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10285932,
-      "reward": 184.5329495077142,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10289241,
-      "reward": 184.93404765442855,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10280031,
-      "reward": 185.0599150484748,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10314722,
-      "reward": 185.67497943991356,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    },
-    {
-      "seed": 10291480,
-      "reward": 187.30655406417088,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|oscillating_control|late_stage_fail"
-    }
-  ],
-  "poor_terminal_control": [
-    {
-      "seed": 10288485,
-      "reward": -10.822023766365845,
-      "steps": 99,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10311338,
-      "reward": -9.231112614256872,
-      "steps": 105,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10282579,
-      "reward": -1.4133500627517037,
-      "steps": 90,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10309087,
-      "reward": -1.1121974125870082,
-      "steps": 102,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10265976,
-      "reward": 6.129636844889802,
-      "steps": 95,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10270427,
-      "reward": 9.450735606647811,
-      "steps": 111,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10302735,
-      "reward": 12.149250913028169,
-      "steps": 94,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10281799,
-      "reward": 12.485432026047135,
-      "steps": 89,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|hard_landing|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10246570,
-      "reward": 13.324648169201922,
-      "steps": 94,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10340283,
-      "reward": 16.995077216933808,
-      "steps": 97,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10245345,
-      "reward": 17.760491609131407,
-      "steps": 97,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10245708,
-      "reward": 18.552749093686288,
-      "steps": 104,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10264433,
-      "reward": 18.5861971976703,
-      "steps": 88,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10332745,
-      "reward": 19.328153025591945,
-      "steps": 93,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10312575,
-      "reward": 20.257635398130603,
-      "steps": 94,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10301746,
-      "reward": 22.139017851133275,
-      "steps": 101,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10253179,
-      "reward": 22.43754687098007,
-      "steps": 92,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10283780,
-      "reward": 23.887078675619847,
-      "steps": 92,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10263207,
-      "reward": 25.57651411806947,
-      "steps": 93,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    },
-    {
-      "seed": 10242782,
-      "reward": 26.718056801555008,
-      "steps": 93,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|poor_terminal_control|late_stage_fail"
-    }
-  ],
-  "late_stage_fail": [
-    {
-      "seed": 10277750,
-      "reward": 177.7316967720152,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
-    },
-    {
-      "seed": 10290902,
-      "reward": 186.73494030225697,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
-    },
-    {
-      "seed": 10262817,
-      "reward": 190.39341060862094,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
-    },
-    {
-      "seed": 10295396,
-      "reward": 193.14652186318,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
-    },
-    {
-      "seed": 10329086,
-      "reward": 195.60455653459098,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
-    },
-    {
-      "seed": 10272857,
-      "reward": 195.73007104649224,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
-    },
-    {
-      "seed": 10317662,
-      "reward": 198.48647829421947,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
-    },
-    {
-      "seed": 10307355,
-      "reward": 201.52819843058046,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
-    },
-    {
-      "seed": 10251597,
-      "reward": 204.49148363938983,
-      "steps": 1000,
-      "crash": 0,
-      "timeout": 1,
-      "category_list": "timeout|late_stage_fail"
     }
   ],
   "fuel_waste": [
     {
-      "seed": 10285057,
-      "reward": 28.486854856171334,
-      "steps": 98,
+      "seed": 10241322,
+      "reward": 44.07004676718964,
+      "steps": 111,
       "crash": 1,
       "timeout": 0,
       "category_list": "crash|fuel_waste|early_crash|late_stage_fail"
     },
     {
-      "seed": 10299204,
-      "reward": 52.91484831857102,
+      "seed": 10241378,
+      "reward": 58.98822635433709,
+      "steps": 115,
+      "crash": 1,
+      "timeout": 0,
+      "category_list": "crash|fuel_waste|early_crash|late_stage_fail"
+    }
+  ],
+  "unstable_attitude": [
+    {
+      "seed": 10241787,
+      "reward": 51.211622028429076,
       "steps": 118,
       "crash": 1,
       "timeout": 0,
-      "category_list": "crash|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10280324,
-      "reward": 55.825710867344526,
-      "steps": 88,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10267991,
-      "reward": 59.0894156657391,
-      "steps": 103,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10279484,
-      "reward": 64.47699509869824,
-      "steps": 88,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|fuel_waste|early_crash|late_stage_fail"
-    },
-    {
-      "seed": 10255170,
-      "reward": 71.88467819371672,
-      "steps": 97,
-      "crash": 1,
-      "timeout": 0,
-      "category_list": "crash|fuel_waste|early_crash|late_stage_fail"
+      "category_list": "crash|unstable_attitude|fuel_waste|early_crash|late_stage_fail"
     }
   ]
 }
